@@ -1,0 +1,32 @@
+{
+    "version": "1.0",
+    "cdn_paths": {
+        "images": "https://cdn.yourwebsite.com/images/",
+        "css": "https://cdn.yourwebsite.com/css/",
+        "js": "https://cdn.yourwebsite.com/js/"
+    },
+    "cache_settings": {
+        "images": {
+            "cache_control": "public, max-age=31536000, immutable",
+            "cors": "*"
+        },
+        "css": {
+            "cache_control": "public, max-age=2592000",
+            "cors": "*"
+        },
+        "js": {
+            "cache_control": "public, max-age=2592000",
+            "cors": "*"
+        }
+    },
+    "cdn_providers": {
+        "cloudflare": {
+            "zone_id": "YOUR_ZONE_ID",
+            "purge_cache_urls": [
+                "https://yourwebsite.com/images/*",
+                "https://yourwebsite.com/css/*",
+                "https://yourwebsite.com/js/*"
+            ]
+        }
+    }
+}
