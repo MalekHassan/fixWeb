@@ -4,22 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>اتصل بنا - سمكري محترف</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
         <div class="container">
             <div class="logo">سمكري محترف</div>
             <ul class="nav-links">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="services.html">خدماتنا</a></li>
-                <li><a href="contact.html" class="active">اتصل بنا</a></li>
+                <li><a href="/main">الرئيسية</a></li>
+                <li><a href="/services">خدماتنا</a></li>
+                <li><a href="/contact" class="active">اتصل بنا</a></li>
             </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <div class="phone-number">
+                <a href="tel:+962777506873">
+                    <i class="fas fa-phone-alt"></i>
+                    +962777506873
+                </a>
             </div>
+            <button class="nav-toggle" aria-label="تبديل القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -35,26 +47,27 @@
                     <form id="contact-form" class="contact-form">
                         <div class="form-group">
                             <label for="name">الاسم الكامل *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
                         </div>
                         <div class="form-group">
                             <label for="phone">رقم الهاتف *</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone" required placeholder="أدخل رقم هاتفك">
                         </div>
                         <div class="form-group">
                             <label for="description">وصف المشكلة *</label>
-                            <textarea id="description" name="description" required></textarea>
+                            <textarea id="description" name="description" required placeholder="اخبرنا عن المشكلة التي تواجهها"></textarea>
                         </div>
-                        <button type="submit" class="cta-button">إرسال الطلب</button>
+                        <button type="submit" class="btn primary">إرسال الطلب</button>
                     </form>
                 </div>
 
                 <div class="contact-info">
                     <div class="info-card">
                         <i class="fas fa-phone"></i>
-                        <h3>الهاتف</h3>
+                        <h3>اتصل بنا</h3>
                         <p>+962777506873</p>
                         <p>متاح ٢٤/٧ للحالات الطارئة</p>
+                        <a href="tel:+962777506873" class="btn primary">اتصل الآن</a>
                     </div>
 
                     <div class="info-card">
@@ -62,6 +75,7 @@
                         <h3>واتساب</h3>
                         <p>+962777506873</p>
                         <p>رد سريع عبر الواتساب</p>
+                        <a href="https://wa.me/962777506873" class="btn primary" target="_blank">راسلنا</a>
                     </div>
 
                     <div class="info-card">

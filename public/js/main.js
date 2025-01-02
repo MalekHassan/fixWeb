@@ -1,95 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
-    const mobileMenu = document.querySelector('.mobile-menu');
+    const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
     }
 
-    // Contact form submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const formData = {
-                name: contactForm.name.value,
-                phone: contactForm.phone.value,
-                description: contactForm.description.value
-            };
-
-            try {
-                const response = await fetch('/submit-form', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    alert('Thank you! Your message has been sent successfully.');
-                    contactForm.reset();
-                } else {
-                    alert('Sorry, there was an error sending your message. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Sorry, there was an error sending your message. Please try again.');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks && navLinks.classList.contains('active')) {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.nav-toggle')) {
+                navLinks.classList.remove('active');
             }
+        }
+    });
+
+    // Lazy loading for images
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
         });
     }
-
-    // Form validation
-    const validateForm = () => {
-        const nameInput = document.getElementById('name');
-        const phoneInput = document.getElementById('phone');
-        const descriptionInput = document.getElementById('description');
-
-        if (nameInput) {
-            nameInput.addEventListener('input', () => {
-                nameInput.setCustomValidity('');
-                nameInput.checkValidity();
-            });
-
-            nameInput.addEventListener('invalid', () => {
-                if(nameInput.value === '') {
-                    nameInput.setCustomValidity('Please enter your name');
-                }
-            });
-        }
-
-        if (phoneInput) {
-            phoneInput.addEventListener('input', () => {
-                phoneInput.setCustomValidity('');
-                phoneInput.checkValidity();
-            });
-
-            phoneInput.addEventListener('invalid', () => {
-                if(phoneInput.value === '') {
-                    phoneInput.setCustomValidity('Please enter your phone number');
-                }
-            });
-        }
-
-        if (descriptionInput) {
-            descriptionInput.addEventListener('input', () => {
-                descriptionInput.setCustomValidity('');
-                descriptionInput.checkValidity();
-            });
-
-            descriptionInput.addEventListener('invalid', () => {
-                if(descriptionInput.value === '') {
-                    descriptionInput.setCustomValidity('Please describe your issue');
-                }
-            });
-        }
-    };
-
-    validateForm();
 });

@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="js/lazy-loading.js" as="script">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="سمكري محترف في اربد - خدمات سباكة منزلية ٢٤ ساعة">
@@ -55,10 +55,9 @@
     </script>
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="css/style.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -67,13 +66,18 @@
         <div class="container">
             <div class="logo">سمكري محترف</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">الرئيسية</a></li>
-                <li><a href="services.html">خدماتنا</a></li>
-                <li><a href="contact.html">اتصل بنا</a></li>
+                <li><a href="/main">الرئيسية</a></li>
+                <li><a href="/services">خدماتنا</a></li>
             </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <div class="phone-number">
+                <a href="tel:+962777506873">
+                    <i class="fas fa-phone-alt"></i>
+                    +962777506873
+                </a>
             </div>
+            <button class="nav-toggle" aria-label="تبديل القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -81,7 +85,7 @@
         <div class="container">
             <h1>سمكري منازل محترف</h1>
             <p>حلول سريعة ومضمونة لجميع مشاكل السباكة المنزلية</p>
-            <a href="contact.html" class="cta-button">اطلب خدمة</a>
+            <a href="https://wa.me/962777506873" class="cta-button">اطلب خدمة</a>
         </div>
     </header>
 
@@ -160,7 +164,7 @@
                     <p>تركيب أحواض وخلاطات ومواسير بضمان</p>
                 </div>
             </div>
-            <a href="services.html" class="secondary-button">جميع الخدمات</a>
+            <a href="/services" class="secondary-button">جميع الخدمات</a>
         </div>
     </section>
 
@@ -197,16 +201,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/main.js" defer></script>
-    <script src="js/lazy-loading.js" defer></script>
-    
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-TAG-ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'YOUR-TAG-ID');
-    </script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
